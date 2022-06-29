@@ -99,7 +99,7 @@ def go(args):
     # Save the sk_pipe pipeline as a mlflow.sklearn model in the directory "random_forest_dir"
     # HINT: use mlflow.sklearn.save_model
 
-    mlfow.sklearn.save_model(sk_pipe, "random_forest_dir")
+    mlflow.sklearn.save_model(sk_pipe, "random_forest_dir")
 
     # YOUR CODE HERE
     ######################################
@@ -113,11 +113,11 @@ def go(args):
     # run.log_artifact to log the artifact to the run
     # YOUR CODE HERE
     ######################################
-    artifact = wandb.Artifact
-    (args.output_artifact,
-    type="model_export",
-    description="Random Forest model exported from MLFlow",
-    metadata=rf_config).add_dir("random_forest_dir")
+    artifact = wandb.Artifact(
+        args.output_artifact,
+        type='model_export',
+        description='Random Forest model exported from MLFlow',
+        metadata=rf_config).add_dir("random_forest_dir")
 
     run.log_artifact(artifact)
 
