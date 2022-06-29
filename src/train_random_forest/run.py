@@ -117,7 +117,9 @@ def go(args):
         args.output_artifact,
         type='model_export',
         description='Random Forest model exported from MLFlow',
-        metadata=rf_config).add_dir("random_forest_dir")
+        metadata=rf_config)
+        
+    artifact.add_dir("random_forest_dir")
 
     run.log_artifact(artifact)
 
